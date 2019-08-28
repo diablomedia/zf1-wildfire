@@ -475,14 +475,14 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
                     'data' => $var
                 ),
                 $skipFinalEncode
-          );
+            );
         } else {
             return $firephp->_recordMessage(
                 self::STRUCTURE_URI_FIREBUGCONSOLE,
                 array('data'                           => $var,
                                                 'meta' => $meta),
                 $skipFinalEncode
-          );
+            );
         }
     }
 
@@ -702,7 +702,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
             foreach ($members as $just_name => $value) {
                 $name = $raw_name = $just_name;
 
-                if ($name{0} == "\0") {
+                if ($name[0] == "\0") {
                     $parts = explode("\0", (string) $name);
                     $name  = $parts[2];
                 }
