@@ -1,20 +1,16 @@
 parameters:
-    checkMissingIterableValueType: false
     level: 7
+    treatPhpDocTypesAsCertain: false
     paths:
         - ./
     excludePaths:
         - %rootDir%/../../../vendor/*
         - %rootDir%/../../../tests/*
     ignoreErrors:
+        -
+            identifier: missingType.iterableValue
         # Interface should probably be changed to add this method (bc break)
         - '#Call to an undefined method Zend_Wildfire_Channel_Interface::getProtocol\(\)\.#'
-        -
-            message: '#Result of && is always false\.#'
-            path: %currentWorkingDirectory%/src/Zend/Wildfire/Channel/HttpHeaders.php
-        -
-            message: '#Negated boolean expression is always false\.#'
-            path: %currentWorkingDirectory%/src/Zend/Wildfire/Channel/HttpHeaders.php
         -
             message: '#Result of \|\| is always true\.#'
             path: %currentWorkingDirectory%/src/Zend/Wildfire/Plugin/FirePhp.php
@@ -22,7 +18,7 @@ parameters:
             message: '#Cannot unset offset .File. on array{Type: string\|null, Label\?: mixed}\.#'
             path: './src/Zend/Wildfire/Plugin/FirePhp.php'
         -
-            message: '#Offset .File. on array{Type: string\|null, Label\?: mixed} in isset\(\) does not exist\.#'
+            message: '#Offset .File. on array{Type: mixed, Label\?: mixed} in isset\(\) does not exist\.#'
             path: ./src/Zend/Wildfire/Plugin/FirePhp.php
         -
             message: '#Offset .Line. on \*NEVER\* in isset\(\) always exists and is not nullable\.#'
@@ -32,6 +28,6 @@ parameters:
             path: ./src/Zend/Wildfire/Plugin/FirePhp.php
             count: 1
         -
-            message: '#Offset .Label. does not exist on array{Type: string\|null, Label\?: mixed, Collapsed\?: .false.\|.true.}\|array{Type: string\|null, Label\?: mixed, File: mixed, Line: mixed, Collapsed\?: .false.\|.true.}\.#'
+            message: '#Offset .Label. might not exist on array{Type: string\|null, Label\?: mixed, Collapsed\?: .false.\|.true.}\|array{Type: string\|null, Label\?: mixed, File: mixed, Line: mixed, Collapsed\?: .false.\|.true.}\.#'
             path: ./src/Zend/Wildfire/Plugin/FirePhp.php
             count: 1
